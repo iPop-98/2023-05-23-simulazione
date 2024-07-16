@@ -2,6 +2,8 @@ package it.polito.tdp.baseball.model;
 
 import java.sql.Date;
 import java.time.LocalDateTime;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class People {
@@ -21,10 +23,20 @@ public class People {
     private LocalDateTime debutDate;
     private LocalDateTime finalgameDate;
     private LocalDateTime deathDate;
+    
+    private Map<Integer, Double> salaryMap;
 
     
 
-    public People(String playerID, String birthCountry, String birthCity, String deathCountry, String deathCity,
+    public Double getSalary(int anno) {
+		return salaryMap.get(anno);
+	}
+
+	public void putSalary(int anno, double salary) {
+		this.salaryMap.put(anno, salary);
+	}
+
+	public People(String playerID, String birthCountry, String birthCity, String deathCountry, String deathCity,
 			String nameFirst, String nameLast, Integer weight, Integer height, String bats, String throwString,
 			LocalDateTime birthDate, LocalDateTime debutDate, LocalDateTime finalgameDate, LocalDateTime deathDate) {
 		super();
@@ -43,6 +55,7 @@ public class People {
 		this.debutDate = debutDate;
 		this.finalgameDate = finalgameDate;
 		this.deathDate = deathDate;
+		this.salaryMap = new HashMap<Integer, Double>();
 	}
 
 	public String getPlayerID(){
